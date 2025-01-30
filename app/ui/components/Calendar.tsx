@@ -9,7 +9,8 @@ export default function Calendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} >
       <DemoContainer  components={['DatePicker']} sx={{padding: '0'}}>
-        <DatePicker label="Даты" sx={{width: '100%'}} />
+        <DatePicker label="C" sx={{width: '100%'}} />
+        <DatePicker label="По" sx={{width: '100%'}} />
       </DemoContainer>
     </LocalizationProvider>
   );

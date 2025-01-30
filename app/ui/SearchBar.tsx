@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import * as React from "react";
-import Calendar from "./components/Calendar";
 import SearchField from "./components/SearchField";
 import SelectField from "./components/SelectField";
+import DatePickerRange from "./components/DatePickerRange";
 
 export default function SearchBar() {
   return (
@@ -20,8 +20,11 @@ export default function SearchBar() {
       flexDirection={"column"}
     >
       <SearchField />
-      <Calendar />
       <SelectField />
+      <Box sx={{zIndex: '9'}}>
+      <DatePickerRange />
+      </Box>
+      
     </Box>
   );
 }

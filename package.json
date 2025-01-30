@@ -13,9 +13,12 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.2",
     "@mui/x-date-pickers": "^7.24.1",
+    "@types/react-date-range": "^1.4.9",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "next": "15.1.6",
     "react": "^19.0.0",
+    "react-date-range": "^2.0.1",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
@@ -25,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
+    "sass": "^1.83.4",
     "typescript": "^5"
   }
 }

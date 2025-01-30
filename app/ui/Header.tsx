@@ -9,12 +9,15 @@ export default function Header() {
       <Container
         sx={{
           padding: "20px 0",
+          display: "flex",
+          alignItems: "center",
         }}
         maxWidth="lg"
       >
         <Typography variant="h5">
           Питерский яхтинг - бессмысленный и беспощадный
         </Typography>
+     
       </Container>
     </Box>
   );

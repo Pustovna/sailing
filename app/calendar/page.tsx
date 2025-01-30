@@ -4,13 +4,15 @@ import Grid from "@mui/material/Grid2";
 import { Container } from '@mui/material';
 import SearchBar from '../ui/SearchBar';
 
+import './calendar.scss';
+
 const Page: React.FC = () => {
     return (
         
-        <Container component={'main'} maxWidth="lg" sx={{marginTop: '100px'}}>
+        <Container className='calendarPage_container' component={'main'} maxWidth="lg">
 
         <Grid container columns={12} spacing={3}>
-            <Grid size={{xs: 0, sm: 3}}>
+            <Grid size={{xs: 12, sm: 3}}>
            <SearchBar />
             </Grid>
             <Grid size={{xs: 12, sm: 9}}>
