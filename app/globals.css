@@ -40,3 +40,20 @@ a {
     color-scheme: dark;
   }
 }
+
+.main_container { 
+  position: relative;
+  min-height: 100vh;
+}
+
+.video_background { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Это позволит видео покрывать весь экран */
+    z-index: -1; /* Убедитесь, что видео находится на заднем плане */
+  
+}
+

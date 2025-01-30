@@ -12,8 +12,12 @@ export default function SearchBar() {
         minHeight: "100%",
         backgroundColor: "white",
         padding: "10px",
+        borderRadius: "10px",
+        boxShadow: "4px 3px 11px 9px rgb(47 61 69 / 97%)",
       }}
-      gap={4}
+      gap={1}
+      display={"flex"}
+      flexDirection={"column"}
     >
       <SearchField />
       <Calendar />

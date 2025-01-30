@@ -11,7 +11,8 @@ const SearchField: React.FC = () => {
 
     return (
         <TextField
-            label="Search"
+            fullWidth
+            label="Поиск"
             variant="outlined"
             onChange={handleSearch}
         />
