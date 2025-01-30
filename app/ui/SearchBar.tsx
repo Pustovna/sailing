@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import * as React from "react";
 import SearchField from "./components/SearchField";
 import SelectField from "./components/SelectField";
-import DatePickerRange from "./components/DatePickerRange";
+import DatePicker from "./components/DatePickerRange";
 
 export default function SearchBar() {
   return (
@@ -22,7 +22,7 @@ export default function SearchBar() {
       <SearchField />
       <SelectField />
       <Box sx={{zIndex: '9'}}>
-      <DatePickerRange />
+      <DatePicker />
       </Box>
       
     </Box>

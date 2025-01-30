@@ -4,34 +4,42 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import './DatePickerRange.scss';
 import * as React from 'react';
 import { ru } from "date-fns/locale";
-import { DateRangePicker } from 'react-date-range';
+import { DateRangePicker, RangeKeyDict } from 'react-date-range';
 
 //documentation: https://github.com/hypeserver/react-date-range
+interface IRanges {
+  selection: { startDate: Date; endDate: Date; key: string; };
+}
 
-const MyComponent = () => {
-  const [selectionRange, setSelectionRange] = React.useState({
+const DatePicker = () => {
+  const [selectionRange, setSelectionRange] = React.useState<IRanges['selection']>({
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection',
   });
 
-  const handleSelect = (ranges) => {
+  const handleSelect = (ranges: RangeKeyDict) => {
     console.log(ranges);
-    setSelectionRange(ranges.selection);
+    const newSelection = ranges.selection as IRanges['selection'] | undefined;
+
+    if (newSelection) {
+      setSelectionRange(newSelection);
+    }
+
   };
 
   return (
     <DateRangePicker
-    className='datePickerRange_container'
+      className='datePickerRange_container'
       ranges={[selectionRange]}
       onChange={handleSelect}
-      locale={ ru }
+      locale={ru}
       staticRanges={[]}
       inputRanges={[]}
       minDate={new Date()}
-
     />
   );
 };
 
-export default MyComponent;
+
+export default DatePicker;

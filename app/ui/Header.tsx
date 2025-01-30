@@ -4,7 +4,7 @@ import * as React from "react";
 export default function Header() {
   return (
     <Box
-      sx={{ position: "fixed", backgroundColor: "#6d6d6db3", width: "100%" }}
+      sx={{ position: "fixed", backgroundColor: "#6d6d6db3", width: "100%", zIndex: 10, backdropFilter: "blur(5px)" }}
     >
       <Container
         sx={{
@@ -14,7 +14,7 @@ export default function Header() {
         }}
         maxWidth="lg"
       >
-        <Typography variant="h5">
+        <Typography variant='h5'>
           Питерский яхтинг - бессмысленный и беспощадный
         </Typography>
      
