@@ -32,6 +32,7 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  margin-top: 80px;
 }
 
 .main ol {
@@ -165,4 +166,13 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.link { 
+  font-size: 40px;
+}
+
+.link:hover { 
+  color: rgb(112, 112, 180);
+  transition: all 1s;
 }

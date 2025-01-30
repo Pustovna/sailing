@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className="main_container">
         <video className="video_background" autoPlay muted loop>
           <source
-            src="http://localhost:3000/static/images/ocean.mp4"
+            src="/static/images/ocean.mp4"
             type="video/mp4"
           />
         </video>

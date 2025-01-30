@@ -6,7 +6,8 @@ import SearchBar from '../ui/SearchBar';
 
 const Page: React.FC = () => {
     return (
-        <Container maxWidth="lg" sx={{marginTop: '100px'}}>
+        
+        <Container component={'main'} maxWidth="lg" sx={{marginTop: '100px'}}>
 
         <Grid container columns={12} spacing={3}>
             <Grid size={{xs: 0, sm: 3}}>
