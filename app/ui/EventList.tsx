@@ -12,10 +12,10 @@ import EventCard from "./components/EventCard";
 export default function EventList() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={{ xs: 5, md: 5 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 5, md: 2 }} columns={{ xs: 12 }}>
         {Array.from(Array(6)).map((_, index) => (
-          <Grid  key={index} size={{ xs: 4, sm: 4, md: 4 }}>
-            <EventCard />
+          <Grid  key={index} size={{ xs: 12 }}>
+            <EventCard link={String(index)}/>
           </Grid>
         ))}
       </Grid>

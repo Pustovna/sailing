@@ -5,12 +5,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
-export default function EventCard() {
+interface EventCardProps {
+    link: string;
+}
+
+export default function EventCard({link} : EventCardProps) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ display: 'flex' }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 140, width: 140 }}
         image="/static/images/Eco-Boat-Conrwall-300x300.jpg"
         title="green iguana"
       />
@@ -31,7 +36,7 @@ export default function EventCard() {
       </CardContent>
       <CardActions>
         <Button size="small">Поделиться</Button>
-        <Button size="small">Подробнее</Button>
+        <Button size="small"> <Link href={`/event/${link}`}>Подробнее</Link> </Button>
       </CardActions>
     </Card>
   );

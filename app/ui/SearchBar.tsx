@@ -9,7 +9,7 @@ export default function SearchBar() {
     <Box
       sx={{
         flexGrow: 1,
-        minHeight: "100%",
+        // minHeight: "100%",
         backgroundColor: "white",
         padding: "10px",
         borderRadius: "10px",
