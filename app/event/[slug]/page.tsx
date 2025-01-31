@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import React, { Suspense } from "react";
+import React from "react";
 import MapContainer from "../../ui/components/map/MapContainer";
 import "./event.scss";
 
@@ -20,7 +20,7 @@ export default async function Page({
         }}
       >
         <Typography variant="h3" margin={"10px"}>
-          Снимаем мачты в Невке
+          {slug} Снимаем мачты в Невке
         </Typography>
         <p>20 мая 2025</p>
         <p>
@@ -33,7 +33,7 @@ export default async function Page({
         <p>Массовое снятие мачт</p>
         <p className="event_desctiption">
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          industry. Lorem Ipsum has been the industrys standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book. It has survived not only
           five centuries, but also the leap into electronic typesetting,
