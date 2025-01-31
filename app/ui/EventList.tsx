@@ -14,7 +14,7 @@ export default function EventList() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 5, md: 2 }} columns={{ xs: 12 }}>
         {Array.from(Array(6)).map((_, index) => (
-          <Grid  key={index} size={{ xs: 12 }}>
+          <Grid  key={index} size={{ xs: 12, sm: 6, md: 12 }}>
             <EventCard link={String(index)}/>
           </Grid>
         ))}

@@ -7,17 +7,20 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
+import "./EventCard.scss";
+
 interface EventCardProps {
     link: string;
 }
 
 export default function EventCard({link} : EventCardProps) {
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card className='event_card'>
       <CardMedia
-        sx={{ height: 140, width: 140 }}
+        component="img"
         image="/static/images/Eco-Boat-Conrwall-300x300.jpg"
         title="green iguana"
+        className='event_card_image'
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
