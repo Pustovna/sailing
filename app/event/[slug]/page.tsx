@@ -16,7 +16,8 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 interface generateMetadataProps {
   params: Promise<{ slug: string }>;
-  searchParams: URLSearchParams;
+  searchParams: Promise<URLSearchParams>; // Изменено на Promise<URLSearchParams>
+
 }
 
 export async function generateMetadata(
