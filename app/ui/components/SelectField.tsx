@@ -20,12 +20,7 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Сходка буеристов",
-  "Л6",
-  "Любительская регата",
-  "ВФПС",
-];
+
 
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
   return {
@@ -35,9 +30,10 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
   };
 }
 
-export default function SelectField() {
+export default function SelectField({ ...params }) {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
+  const { names, title } = params;
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
@@ -52,7 +48,7 @@ export default function SelectField() {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-multiple-chip-label">Тип события</InputLabel>
+        <InputLabel id="demo-multiple-chip-label">{title}</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
@@ -60,9 +56,7 @@ export default function SelectField() {
           fullWidth
           value={personName}
           onChange={handleChange}
-          input={
-            <OutlinedInput id="select-multiple-chip" label="Тип события" />
-          }
+          input={<OutlinedInput id="select-multiple-chip" label={`${title}`} />}
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
@@ -72,7 +66,7 @@ export default function SelectField() {
           )}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {names.map((name: string) => (
             <MenuItem
               key={name}
               value={name}

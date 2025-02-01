@@ -1,8 +1,71 @@
-.event_desctiption {
-    margin-top: 50px;
+@import "../../variables.scss";
+
+.event_container {
+  background-color: $eventBackgroundColor;
+  padding: 20px 40px;
+  border-radius: $containerBorderRadius;
+
+  @media screen and (max-width: 500px) {
+    padding: 20px 14px;
+    
+  }
 }
 
-.event_tip { 
-    color: gray;
-    font-size: 14px;
+.event_desctiption {
+  font-size: 18px;
+  color: rgb(44, 44, 44);
 }
+
+.event_tip {
+  color: gray;
+  font-size: 14px;
+}
+
+.event_note { 
+    color: rgb(83, 82, 82);
+    font-weight: 400;
+}
+
+.contact { 
+    color: rgb(93, 105, 109);
+    
+    &.contact_first { 
+       
+        font-weight: 400;
+        border-right: 1px solid rgba(83, 82, 82, 0.384);
+        padding-right: 10px;
+        margin-right: 10px;
+    }
+
+    &:hover { 
+        color: rgb(134, 134, 139);
+        transition: all 0.3s;
+    }
+}
+
+.video_container { 
+   
+    border-radius: 0 0 $containerBorderRadius $containerBorderRadius;
+    height: 300px;
+    position: relative;
+    width: 100%; /* Ширина контейнера */
+    // padding-top: 30%; 
+    overflow: hidden;
+
+    @media screen and (max-width: 500px) {
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        
+    }
+
+    & video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* Ширина видео 100% от контейнера */
+        height: 100%; /* Высота видео 100% от контейнера */
+        object-fit: cover; /* Обеспечивает обрезку видео, чтобы заполнить контейнер */
+    }
+}
+
+
+

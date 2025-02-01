@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 
 .event_card {
     display: flex;
@@ -25,4 +26,9 @@
             border-radius: 0;
         }
     }
+    .event_note {
+        color: $eventNoteColor;
+    }
+    
 }
+

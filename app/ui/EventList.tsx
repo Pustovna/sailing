@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 import Grid from "@mui/material/Grid2";
 
-import EventCard from "./components/EventCard";
+import EventCard from "./components/EventCard/EventCard";
 
 
 

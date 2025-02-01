@@ -20,7 +20,8 @@ export default function SearchBar() {
       flexDirection={"column"}
     >
       <SearchField />
-      <SelectField />
+      <SelectField names={["Сходка буеристов", "Л6", "Любительская регата", "ВФПС"]} title={'Тип события'}/>
+      <SelectField names={["Невка", "Геркулес", "Яхтенный чат", "ВФПС"]} title={'Сообщество'}/>
       <Box sx={{zIndex: '9'}}>
       <DatePicker />
       </Box>
