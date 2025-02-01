@@ -51,7 +51,7 @@ export default async function Page({
 
   return (
     <Container maxWidth="lg">
-      <Box component={"section"} color={"#474646"} className="event_container">
+      <Box component={"section"} color={"#474646"} className="event_container" marginBottom={'30px'}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
             Главная

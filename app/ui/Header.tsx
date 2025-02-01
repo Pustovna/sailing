@@ -4,20 +4,24 @@ import * as React from "react";
 export default function Header() {
   return (
     <Box
-      sx={{ position: "fixed", backgroundColor: "#6d6d6db3", width: "100%", zIndex: 10, backdropFilter: "blur(5px)" }}
+      sx={{
+        position: "fixed",
+        backgroundColor: "#6d6d6db3",
+        width: "100%",
+        zIndex: 10,
+        backdropFilter: "blur(5px)",
+      }}
     >
       <Container
         sx={{
-          padding: "20px 0",
           display: "flex",
           alignItems: "center",
         }}
         maxWidth="lg"
       >
-        <Typography variant='h5'>
+        <Typography padding={'10px 0'}  sx={{ typography: { sm: "h5", xs: "body1" } }}>
           Питерский яхтинг - бессмысленный и беспощадный
         </Typography>
-     
       </Container>
     </Box>
   );
