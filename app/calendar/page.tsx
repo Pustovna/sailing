@@ -1,28 +1,23 @@
-import React from "react";
-import EventList from "../ui/EventList";
-import Grid from "@mui/material/Grid2";
+import React, { Suspense } from "react";
 import { Container } from "@mui/material";
-import SearchBar from "../ui/SearchBar";
 
 import "./calendar.scss";
+import Calendar from "./Calendar";
 
-const Page: React.FC = () => {
+export default async function Page() {
+  const data = await fetch(`${process.env.REACT_DOMAIM}/events`);
+  const posts = await data.json();
+
+
   return (
     <Container
       className="calendarPage_container"
       component={"main"}
       maxWidth="lg"
     >
-      <Grid container columns={12} spacing={3}>
-        <Grid size={{ xs: 12, sm: 12, md: 4, lg: 3 }}>
-          <SearchBar />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 9 }}>
-          <EventList />
-        </Grid>
-      </Grid>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Calendar posts={posts.data} />
+      </Suspense>
     </Container>
   );
-};
-
-export default Page;
+}

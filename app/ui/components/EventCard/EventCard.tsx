@@ -12,9 +12,10 @@ import { Box } from "@mui/material";
 
 interface EventCardProps {
   link: string;
+  post: any;
 }
 
-export default function EventCard({ link }: EventCardProps) {
+export default function EventCard({ link, post }: EventCardProps) {
   return (
     <Card className="event_card">
       <CardMedia
@@ -30,7 +31,7 @@ export default function EventCard({ link }: EventCardProps) {
       >
         <CardContent sx={{height: 'calc(100% - 46px)', display: 'flex', flexDirection: 'column'}}>
           <Typography gutterBottom variant="h5" component="h5">
-            Ремонт всего и вся
+          {post.title}
           </Typography>
 
           <Box display={"flex"} flexDirection={"column"} marginBottom={'16px'}>

@@ -9,13 +9,14 @@ import EventCard from "./components/EventCard/EventCard";
 
 
 
-export default function EventList() {
+export default function EventList({ posts }) {
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 5, md: 2 }} columns={{ xs: 12 }}>
-        {Array.from(Array(6)).map((_, index) => (
+        {posts.map((post, index) => (
           <Grid  key={index} size={{ xs: 12, sm: 6, md: 12 }}>
-            <EventCard link={String(index)}/>
+            <EventCard post={post} link={String(index)}/>
           </Grid>
         ))}
       </Grid>
