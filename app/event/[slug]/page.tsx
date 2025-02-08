@@ -10,11 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import MapContainer from "../../ui/components/map/MapContainer";
 import "./event.scss";
 import type { Metadata, ResolvingMetadata } from "next";
 import qs from "qs";
-import { fi } from "date-fns/locale";
 import MapTwo from "@/app/ui/components/map/MapTwo";
 
 interface generateMetadataProps {

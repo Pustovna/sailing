@@ -1,31 +1,12 @@
 import React, { Suspense } from "react";
 import { Container } from "@mui/material";
-import qs from "qs";
 import "./calendar.scss";
 import Calendar from "./Calendar";
+import { getPosts } from "../actions/events";
 
 export default async function Page() {
-  const query = qs.stringify(
-    {
-      populate: {
-        info: {
-          populate: [
-            "contact",
-            "eventTypes",
-            "metadata",
-            "community",
-            "place",
-            "images",
-          ],
-        },
-      },
-    },
-    {
-      encodeValuesOnly: true, // prettify URL
-    }
-  );
-  const data = await fetch(`${process.env.REACT_DOMAIM}/events?${query}`);
-  const posts = await data.json();
+  
+  const {error, success} = await getPosts();
 
   return (
     <Container
@@ -34,7 +15,13 @@ export default async function Page() {
       maxWidth="lg"
     >
       <Suspense fallback={<div>Loading...</div>}>
-        <Calendar posts={posts.data} />
+      {success &&  (
+           <Calendar posts={success.data} />
+      )}
+      {error && (
+        <div>Какая-то ошибка</div>
+      )}
+     
       </Suspense>
     </Container>
   );

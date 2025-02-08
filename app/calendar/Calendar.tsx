@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid2";
 import EventList from "../ui/EventList";
 
 export default function Calendar({ posts }) {
-    console.log(posts)
+
 
   return (
     <Container>
