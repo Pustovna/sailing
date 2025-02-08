@@ -3,7 +3,7 @@ import React from "react";
 import MapTwo from "./MapTwo";
 
 
-export default function MapContainer() {
+export default function MapContainer({  }) {
   return (
     <>
     <MapTwo></MapTwo>

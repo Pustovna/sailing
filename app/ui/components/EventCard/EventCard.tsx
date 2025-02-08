@@ -36,27 +36,25 @@ export default function EventCard({ link, post }: EventCardProps) {
 
           <Box display={"flex"} flexDirection={"column"} marginBottom={'16px'}>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              <span className="event_note">Даты:</span> 01.01.2022 - 01.01.2022
+              <span className="event_note">Дата:</span> {post.info.date}
             </Typography>
-            <Typography variant="body2" sx={{ color: "text.secondary"}}>
-            <span className="event_note">Регистрация до:</span> 01.01.2022
-            </Typography>
+            {/* <Typography variant="body2" sx={{ color: "text.secondary"}}>
+            <span className="event_note">Регистрация до:</span> 
+            </Typography> */}
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            <span className="event_note">Цена участия:</span> 1000 руб.
+            <span className="event_note">Цена участия:</span> {post.info.price} руб.
             </Typography>
           </Box>
 
           <Typography variant="body1" sx={{ color: "text.secondary", margin: 'auto 0' }}>
-            Замечательное событие в городе Санкт-Петребурге. Приглашаем всех
-            желающих принять участие. Или не всех. Или не приглашаем. Сами
-            решайте. 
+            {post.info.shortDescription}  
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="small">Поделиться</Button>
           <Button size="small">
             {" "}
-            <Link href={`/event/${link}`}>Подробнее</Link>{" "}
+            <Link href={`/event/${post.eventUID}`}>Подробнее</Link>{" "}
           </Button>
         </CardActions>
       </Box>

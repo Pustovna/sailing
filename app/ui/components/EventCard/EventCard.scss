@@ -1,4 +1,4 @@
-@import "../../../variables.scss";
+@use "../../../variables.scss";
 
 .event_card {
     display: flex;
@@ -27,7 +27,7 @@
         }
     }
     .event_note {
-        color: $eventNoteColor;
+        color: variables.$eventNoteColor;
     }
     
 }

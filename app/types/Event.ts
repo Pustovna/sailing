@@ -8,6 +8,7 @@ export interface Contact {
 export interface Place {
     offline: boolean;
     address?: string;
+    coordinates: number[];
     link?: string;
 }
 
@@ -31,5 +32,6 @@ export default interface Event {
     eventTypes: string[];
     meta: EventMetadata;
     images?: string[];
+    eventUID: string;
   };
 }

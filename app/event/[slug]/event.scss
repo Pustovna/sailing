@@ -1,9 +1,9 @@
-@import "../../variables.scss";
+@use "../../variables.scss";
 
 .event_container {
-  background-color: $eventBackgroundColor;
+  background-color: variables.$eventBackgroundColor;
   padding: 20px 40px;
-  border-radius: $containerBorderRadius;
+  border-radius: variables.$containerBorderRadius;
 
   @media screen and (max-width: 500px) {
     padding: 20px 14px;
@@ -32,9 +32,9 @@
     &.contact_first { 
        
         font-weight: 400;
-        border-right: 1px solid rgba(83, 82, 82, 0.384);
-        padding-right: 10px;
-        margin-right: 10px;
+        border-left: 1px solid rgba(83, 82, 82, 0.384);
+        padding-left: 10px;
+        margin-left: 10px;
     }
 
     &:hover { 
@@ -45,7 +45,7 @@
 
 .video_container { 
    
-    border-radius: 0 0 $containerBorderRadius $containerBorderRadius;
+    border-radius: 0 0 variables.$containerBorderRadius variables.$containerBorderRadius;
     height: 300px;
     position: relative;
     width: 100%; /* Ширина контейнера */

@@ -2,19 +2,19 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-const SearchField: React.FC = () => {
-    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const searchTerm = event.target.value;
-        console.log(searchTerm);
-        // Perform search logic here
-    };
+const SearchField: React.FC = ( { props }) => {
+    // const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const searchTerm = event.target.value;
+    //     console.log(searchTerm);
+    //     // Perform search logic here
+    // };
 
     return (
         <TextField
             fullWidth
             label="Поиск события"
             variant="outlined"
-            onChange={handleSearch}
+            onChange={() => console.log('search')}
         />
     );
 };

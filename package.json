@@ -12,18 +12,20 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.2",
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@types/react-date-range": "^1.4.9",
     "@types/yandex-maps": "^2.1.36",
     "date-fns": "^4.1.0",
     "next": "15.1.6",
+    "qs": "^6.14.0",
     "react": "^18",
     "react-date-range": "^2.0.1",
-    "react-dom": "^18",
-    "@pbe/react-yandex-maps": "^1.2.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/qs": "^6.9.18",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@yandex/ymaps3-types": "^1.0.15731128",

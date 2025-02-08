@@ -14,7 +14,7 @@ export default function EventList({ posts }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 5, md: 2 }} columns={{ xs: 12 }}>
-        {posts.map((post, index) => (
+        {posts?.map((post, index) => (
           <Grid  key={index} size={{ xs: 12, sm: 6, md: 12 }}>
             <EventCard post={post} link={String(index)}/>
           </Grid>
