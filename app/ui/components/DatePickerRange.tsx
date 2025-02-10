@@ -5,6 +5,7 @@ import './DatePickerRange.scss';
 import * as React from 'react';
 import { ru } from "date-fns/locale";
 import { DateRangePicker, RangeKeyDict } from 'react-date-range';
+import { useFilter } from '@/app/context/filter';
 
 //documentation: https://github.com/hypeserver/react-date-range
 interface IRanges {
@@ -17,12 +18,14 @@ const DatePicker = () => {
     endDate: new Date(),
     key: 'selection',
   });
+    const { updateFilter } = useFilter();
 
   const handleSelect = (ranges: RangeKeyDict) => {
     console.log(ranges);
     const newSelection = ranges.selection as IRanges['selection'] | undefined;
 
     if (newSelection) {
+      updateFilter('date', newSelection);
       setSelectionRange(newSelection);
     }
 

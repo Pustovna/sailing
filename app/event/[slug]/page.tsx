@@ -72,7 +72,7 @@ export default async function Page({
       encodeValuesOnly: true, // prettify URL
     }
   );
-  const data = await fetch(`${process.env.REACT_DOMAIM}/events?${query}`);
+  const data = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/events?${query}`);
   const post = await data.json().then((res) => res.data[0]);
 
   return (

@@ -8,6 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
+import { useFilter } from "../../context/filter";
+import { toUnitless } from "@mui/material/styles/cssUtils";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -20,8 +22,6 @@ const MenuProps = {
   },
 };
 
-
-
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
   return {
     fontWeight: personName.includes(name)
@@ -33,30 +33,38 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 export default function SelectField({ ...params }) {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
-  const { names, title } = params;
+  const [previousNames, setPreviousName] = React.useState<string[]>([]);
+  const { names, title, label } = params;
+  const { updateFilter } = useFilter();
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
     setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
+      typeof event.target.value === "string"
+        ? event.target.value.split(",")
+        : event.target.value
     );
+  };
+
+  const handleClose = () => {
+    if (JSON.stringify(personName) !== JSON.stringify(previousNames)) {
+      updateFilter(title, personName);
+    }
   };
 
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-multiple-chip-label">{title}</InputLabel>
+        <InputLabel id={`${title}`}>{label}</InputLabel>
         <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
+          labelId={`${title}`}
+          id={`${title}`}
           multiple
           fullWidth
           value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label={`${title}`} />}
+          onOpen={() => setPreviousName(personName)}
+          onChange={(e) => handleChange(e)}
+          onClose={() => handleClose()}
+          input={<OutlinedInput id={`select-${title}`} label={`${label}`} />}
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (

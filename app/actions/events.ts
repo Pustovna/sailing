@@ -21,9 +21,10 @@ const eventsQuert = qs.stringify(
 );
 
 export const getPosts = async () => {
+  console.log(process.env.NEXT_PUBLIC_DOMAIN)
   try {
     const response = await fetch(
-      `${process.env.REACT_DOMAIM}/events?${eventsQuert}`
+      `${process.env.NEXT_PUBLIC_DOMAIN}/events?${eventsQuert}`
     );
     const data = await response.json();
 

@@ -1,17 +1,10 @@
-'use client';
 import Box from "@mui/material/Box";
 import * as React from "react";
 import SearchField from "./components/SearchField";
 import SelectField from "./components/SelectField";
 import DatePicker from "./components/DatePickerRange";
-import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
-  const router = useRouter();
-  const setFilter = (data) => { 
-    router.push("?title=" + data);
-  }
-
   return (
     <Box
       sx={{
@@ -26,13 +19,20 @@ export default function SearchBar() {
       display={"flex"}
       flexDirection={"column"}
     >
-      <SearchField onChange={setFilter}/>
-      <SelectField names={["Сходка буеристов", "Л6", "Любительская регата", "ВФПС"]} title={'Тип события'}/>
-      <SelectField names={["Невка", "Геркулес", "Яхтенный чат", "ВФПС"]} title={'Сообщество'}/>
-      <Box sx={{zIndex: '9'}}>
-      <DatePicker />
+      <SearchField />
+      <SelectField
+        names={["Сходка буеристов", "Л6", "Любительская регата", "ВФПС"]}
+        title={"type"}
+        label={"Тип"}
+      />
+      <SelectField
+        names={["Невка", "Геркулес", "Яхтенный чат", "ВФПС"]}
+        title={"community"}
+        label={"Сообщество"}
+      />
+      <Box sx={{ zIndex: "9" }}>
+        <DatePicker />
       </Box>
-      
     </Box>
   );
 }
