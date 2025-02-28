@@ -155,12 +155,15 @@ export default async function Page({
           </Typography>
         )}
 
-        <Typography variant="body1">
-          <span className="event_note">Контакт: </span>
-
+      
+        <Box display={'flex'} alignItems={'baseline'} gap={'4px'}>
+        
+          <Typography variant="body1" className="event_note">Контакт: </Typography>
+     
+       
           {post.info?.contact.map((item) => {
             return (
-              <Box sx={{ display: "inline" }} key={item.id}>
+        <Box display={'flex'} flexWrap={'wrap'} key={item}>
                 <span>{item.name}</span>
                 {item.telegram && (
                   <a href={``} className="contact contact_first">
@@ -182,10 +185,10 @@ export default async function Page({
                     {item.whatsapp}
                   </a>
                 )}
-              </Box>
+       </Box>
             );
           })}
-        </Typography>
+       </Box>
 
         <Box
           sx={{ margin: "30px 0" }}

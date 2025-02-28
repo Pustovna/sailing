@@ -9,19 +9,17 @@ import { useFilter } from '@/app/context/filter';
 
 //documentation: https://github.com/hypeserver/react-date-range
 interface IRanges {
-  selection: { startDate: Date; endDate: Date; key: string; };
+  selection: { startDate: Date ; endDate: Date ; key: string; };
 }
 
 const DatePicker = () => {
   const [selectionRange, setSelectionRange] = React.useState<IRanges['selection']>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection',
+    startDate: new Date(), endDate: new Date(), key: 'selection',
   });
+  const [minDate, setMinDate] = React.useState(new Date());
     const { updateFilter } = useFilter();
 
   const handleSelect = (ranges: RangeKeyDict) => {
-    console.log(ranges);
     const newSelection = ranges.selection as IRanges['selection'] | undefined;
 
     if (newSelection) {
@@ -31,15 +29,16 @@ const DatePicker = () => {
 
   };
 
+
   return (
     <DateRangePicker
       className='datePickerRange_container'
-      ranges={[selectionRange]}
+      ranges={selectionRange ? [selectionRange] : []}
       onChange={handleSelect}
       locale={ru}
       staticRanges={[]}
       inputRanges={[]}
-      minDate={new Date()}
+      minDate={minDate}
     />
   );
 };

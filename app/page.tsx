@@ -5,11 +5,12 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Link className={styles.link} href="/calendar">Календарь</Link>
+        <Link className={styles.link} href="/calendar">
+          Календарь
+        </Link>
       </main>
-      <footer className={styles.footer}>
-     
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
+
   );
 }

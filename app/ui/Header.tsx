@@ -5,11 +5,7 @@ export default function Header() {
   return (
     <Box
       sx={{
-        position: "fixed",
-        backgroundColor: "#6d6d6db3",
-        width: "100%",
-        zIndex: 10,
-        backdropFilter: "blur(5px)",
+       
       }}
     >
       <Container
@@ -19,7 +15,7 @@ export default function Header() {
         }}
         maxWidth="lg"
       >
-        <Typography padding={'10px 0'}  sx={{ typography: { sm: "h5", xs: "body1" } }}>
+        <Typography padding={'10px 0'}  >
           Питерский яхтинг - бессмысленный и беспощадный
         </Typography>
       </Container>

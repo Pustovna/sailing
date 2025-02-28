@@ -29,25 +29,35 @@ export default function EventCard({ link, post }: EventCardProps) {
         flexDirection="column"
         justifyContent={"space-between"}
       >
-        <CardContent sx={{height: 'calc(100% - 46px)', display: 'flex', flexDirection: 'column'}}>
+        <CardContent
+          sx={{
+            height: "calc(100% - 46px)",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <Typography gutterBottom variant="h5" component="h5">
-          {post.title}
+            {post.title}
           </Typography>
 
-          <Box display={"flex"} flexDirection={"column"} marginBottom={'16px'}>
+          <Box display={"flex"} flexDirection={"column"} marginBottom={"16px"}>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              <span className="event_note">Дата:</span> {post.info.date}
+              <span className="event_note">Дата:</span> {post.info?.date}
             </Typography>
             {/* <Typography variant="body2" sx={{ color: "text.secondary"}}>
             <span className="event_note">Регистрация до:</span> 
             </Typography> */}
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            <span className="event_note">Цена участия:</span> {post.info.price} руб.
+              <span className="event_note">Цена участия:</span>{" "}
+              {post.info?.price} руб.
             </Typography>
           </Box>
 
-          <Typography variant="body1" sx={{ color: "text.secondary", margin: 'auto 0' }}>
-            {post.info.shortDescription}  
+          <Typography
+            variant="body1"
+            sx={{ color: "text.secondary", margin: "auto 0" }}
+          >
+            {post.info?.shortDescription}
           </Typography>
         </CardContent>
         <CardActions>

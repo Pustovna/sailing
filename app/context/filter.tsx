@@ -85,8 +85,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
     const fetchData = async () => {
       try {
-         const {error, success} = await getPosts();
-
+         const {error, success} = await getPosts(filters);
+          console.log(success);
         if (error) {
           console.log(error);
         }
