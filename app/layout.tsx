@@ -26,17 +26,19 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body className="main_container">
-        <video className="video_background" autoPlay muted loop>
-          <source
-            src="https://media2.zenrus.ru/media/video/ocean.mp4"
-            type="video/mp4"
-          />
-        </video>
-   
-       <header className="header_container">
+        <div className="backvideo_container">
+          <video className="video_background" autoPlay muted loop>
+            <source
+              src="https://media2.zenrus.ru/media/video/ocean.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+
+        <header className="header_container">
           <Header />
-       </header>
-   
+        </header>
+
         {children}
       </body>
     </html>

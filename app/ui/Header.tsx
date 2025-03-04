@@ -3,22 +3,17 @@ import * as React from "react";
 
 export default function Header() {
   return (
-    <Box
-      sx={{
-       
-      }}
-    >
+  
       <Container
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
         maxWidth="lg"
       >
-        <Typography padding={'10px 0'}  >
+        <Box display={'flex'} justifyContent={'center'}>
+        <Typography padding={'10px 0'} color={'white'}>
           Питерский яхтинг - бессмысленный и беспощадный
         </Typography>
+        </Box>
+        
       </Container>
-    </Box>
+
   );
 }

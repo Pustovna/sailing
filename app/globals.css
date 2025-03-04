@@ -1,11 +1,11 @@
 :root {
-  --background: #ffffff;
+  --background: #383838;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #383838;
     --foreground: #ededed;
   }
 }
@@ -46,15 +46,33 @@ a {
   min-height: 100vh;
 }
 
+.backvideo_container {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; 
+  z-index: -1; 
+}
+
 .video_background { 
-    position: fixed;
+    /* position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover; 
-    z-index: -1; 
-   
+    z-index: -1;  */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }
 
 .header_container {

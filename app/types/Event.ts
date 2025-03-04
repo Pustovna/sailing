@@ -1,4 +1,5 @@
 export interface Contact {
+  id: string;
   name: string;
   telegram?: string;
   email: string;
@@ -17,6 +18,11 @@ export interface EventMetadata {
     keywords: string[];
 }
 
+export interface Community { 
+  name: string;
+  id: string;
+}
+
 export default interface Event {
   title: string;
   info: {
@@ -28,7 +34,7 @@ export default interface Event {
     price?: string;
     unicLink?: string;
     author: string;
-    comunity: string[];
+    comunity: Community[];
     eventTypes: string[];
     meta: EventMetadata;
     images?: string[];
