@@ -1,4 +1,5 @@
 import qs from "qs";
+import { Filters } from "../types/EventFilter";
 
 const allEvents = qs.stringify(
   {
@@ -20,45 +21,66 @@ const allEvents = qs.stringify(
   }
 );
 
-const eventsQuert = qs.stringify(
-  {
-    filters: {
-      info: {
-        eventTypes: {
-          name: {
-            $eq: "Круизный яхтинг",
-          },
-        },
-      },
-    },
-    populate: {
-      info: {
-        populate: [
-          "contact",
-          "eventTypes",
-          "metadata",
-          "community",
-          "place",
-          "images",
-        ],
-      },
-    },
-  },
-  {
-    encodeValuesOnly: true, // prettify URL
-  }
-);
-
-export const getPosts = async (filters) => {
+export const getPosts = async (filters?:  Filters) => {
   if (filters) {
     const { query, type, community, date } = filters;
 
+    const filtersObject: any = {
+      title: {
+      },
+      info: {
+        date: { 
+          
+        },
+        eventTypes:  {
+          name: {}
+        }, 
+        community: {
+          name: {
+          }
+        }
+      }
+    };
+
+    console.log(query, type, community, date);
+    if (query) {
+      filtersObject.title.$containsi = query;
+    }
+    if (type) { 
+      filtersObject.info.eventTypes.name.$in = type;
+    }
+    if (community) {
+      filtersObject.info.community.name.$in = community;
+    }
+    if (date) { 
+      filtersObject.info.date.$between = [date.startDate, date.endDate];
+    }
+    const eventsQuert = qs.stringify(
+      {
+        filters: filtersObject,
+        populate: {
+          info: {
+            populate: [
+              "contact",
+              "eventTypes",
+              "metadata",
+              "community",
+              "place",
+              "images",
+            ],
+          },
+        },
+      },
+      {
+        encodeValuesOnly: true, // prettify URL
+      }
+    );
+
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_DOMAIN}/events?${allEvents}`
+        `${process.env.NEXT_PUBLIC_DOMAIN}/events?${eventsQuert}`
       );
       const data = await response.json();
-      console.log("filters");
       return { success: data };
     } catch (error) {
       return { error: error };
@@ -69,14 +91,12 @@ export const getPosts = async (filters) => {
         `${process.env.NEXT_PUBLIC_DOMAIN}/events?${allEvents}`
       );
       const data = await response.json();
-      console.log("not filters");
       return { success: data };
     } catch (error) {
       return { error: error };
     }
   }
 };
-
 
 export const getPostsById = async (id: string) => {
   const query = qs.stringify(

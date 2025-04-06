@@ -5,7 +5,8 @@ import Grid from "@mui/material/Grid2";
 import EventList from "../ui/EventList";
 import { FilterProvider } from "../context/filter";
 
-export default function Calendar({ posts }) {
+export default function Calendar({ posts } : { posts: any[] }) {
+
   return (
     <Container>
       <FilterProvider>

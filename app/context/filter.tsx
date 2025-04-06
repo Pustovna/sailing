@@ -6,19 +6,7 @@ import React, {
   ReactNode,
 } from "react";
 import { getPosts } from "../actions/events";
-
-interface IRanges {
-  startDate: Date;
-  endDate: Date;
-  key: string;
-}
-
-interface Filters {
-  query: string;
-  type: string | string[];
-  community: string | string[];
-  date: IRanges;
-}
+import { IRanges, Filters } from "@/app/types/EventFilter";
 
 interface FilterContextType {
   filters: Filters;
@@ -26,7 +14,7 @@ interface FilterContextType {
     key: keyof Filters,
     value: string | string[] | IRanges
   ) => void;
-  data: any[]; // Здесь можно уточнить тип данных, если известен
+  data: { data: any[] };
 }
 
 const initialContext: FilterContextType = {
@@ -35,13 +23,12 @@ const initialContext: FilterContextType = {
     type: "",
     community: "",
     date: {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
+      startDate: '',
+      endDate: '',
     },
   },
   updateFilter: () => {},
-  data: [],
+  data: { data: [] },
 };
 
 const FilterContext = createContext<FilterContextType>(initialContext);
@@ -50,13 +37,11 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [filters, setFilters] = useState<Filters>(initialContext.filters);
-  const [
-    abortController,
-    setAbortController,
-  ] = useState<AbortController | null>(null);
-  const [isFirstRender, setIsFirstRender] = useState(true); 
+  const [abortController, setAbortController] =
+    useState<AbortController | null>(null);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<{ data: any[] }>({ data: [] });
 
   // Функция для обновления фильтров
   const updateFilter = (
@@ -71,7 +56,6 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
   // Эффект для выполнения запроса на сервер при изменении фильтров
   useEffect(() => {
-
     if (isFirstRender) {
       setIsFirstRender(false);
       return;
@@ -85,16 +69,14 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
     const fetchData = async () => {
       try {
-         const {error, success} = await getPosts(filters);
-          console.log(success);
+        const { error, success } = await getPosts(filters);
         if (error) {
           console.log(error);
         }
 
-  
         setData(success);
       } catch (error) {
-        if (error.name === "AbortError") {
+        if ((error as Error).name === "AbortError") {
           console.log("Запрос был отменен");
         } else {
           console.error("Ошибка при получении данных:", error);

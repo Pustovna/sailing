@@ -4,6 +4,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import './DatePickerRange.scss';
 import * as React from 'react';
 import { ru } from "date-fns/locale";
+import format from 'date-fns/format';
 import { DateRangePicker, RangeKeyDict } from 'react-date-range';
 import { useFilter } from '@/app/context/filter';
 
@@ -23,9 +24,13 @@ const DatePicker = () => {
     const newSelection = ranges.selection as IRanges['selection'] | undefined;
 
     if (newSelection) {
-      updateFilter('date', newSelection);
+      const startDate = format(newSelection.startDate, 'yyyy-MM-dd');
+      const endDate = format(newSelection.endDate, 'yyyy-MM-dd');
+      updateFilter('date',  { startDate, endDate });
       setSelectionRange(newSelection);
     }
+
+    
 
   };
 
@@ -39,6 +44,7 @@ const DatePicker = () => {
       staticRanges={[]}
       inputRanges={[]}
       minDate={minDate}
+      dateDisplayFormat='dd.MM.yyyy'
     />
   );
 };
