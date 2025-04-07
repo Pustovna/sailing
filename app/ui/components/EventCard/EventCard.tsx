@@ -10,12 +10,21 @@ import Link from "next/link";
 import "./EventCard.scss";
 import { Box } from "@mui/material";
 
+interface IPost {
+  title: string;
+  info: {
+    date: string;
+    price: string;
+    shortDescription: string;
+  };
+  eventUID: string;
+}
 interface EventCardProps {
-  link: string;
-  post: any;
+  link?: string;
+  post: IPost;
 }
 
-export default function EventCard({ link, post }: EventCardProps) {
+export default function EventCard({ post }: EventCardProps) {
   return (
     <Card className="event_card">
       <CardMedia

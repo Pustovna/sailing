@@ -22,7 +22,7 @@ const DatePicker = () => {
     endDate: new Date(),
     key: "selection",
   });
-  const [minDate, setMinDate] = React.useState(new Date());
+  const [minDate] = React.useState(new Date());
   const { updateFilter } = useFilter();
 
   const handleSelect = (ranges: RangeKeyDict) => {

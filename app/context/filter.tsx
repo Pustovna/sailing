@@ -14,7 +14,7 @@ interface FilterContextType {
     key: keyof Filters,
     value: string | string[] | IRanges
   ) => void;
-  data: { data: any[] };
+  data: { data: [] };
 }
 
 const initialContext: FilterContextType = {
@@ -41,7 +41,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     useState<AbortController | null>(null);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const [data, setData] = useState<{ data: any[] }>({ data: [] });
+  const [data, setData] = useState<{ data: [] }>({ data: [] });
 
   // Функция для обновления фильтров
   const updateFilter = (
@@ -89,7 +89,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     return () => {
       controller.abort(); // Отменяем запрос при размонтировании
     };
-  }, [filters]);
+  }, [filters, abortController, isFirstRender]);
 
   return (
     <FilterContext.Provider value={{ filters, updateFilter, data }}>

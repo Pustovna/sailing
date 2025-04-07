@@ -5,7 +5,7 @@ import "./styles.css";
 import { IMapState } from "yandex-maps";
 
 interface MapTwoProps {
-  coordinates: number[];
+  coordinates?: number[];
 }
 
 const MapLoder = () => {

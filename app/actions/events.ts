@@ -1,5 +1,5 @@
 import qs from "qs";
-import { Filters } from "../types/EventFilter";
+import { Filters, FilterAPI } from "../types/EventFilter";
 
 const allEvents = qs.stringify(
   {
@@ -25,7 +25,7 @@ export const getPosts = async (filters?:  Filters) => {
   if (filters) {
     const { query, type, community, date } = filters;
 
-    const filtersObject: any = {
+    const filtersObject: FilterAPI = {
       title: {
       },
       info: {

@@ -9,9 +9,9 @@ import EventCard from "./components/EventCard/EventCard";
 import { useFilter } from "../context/filter";
 import { Filters } from "../types/EventFilter";
 
-export default function EventList({ posts }: { posts: any[] }) {
+export default function EventList({ posts }: { posts: [] }) {
   const { data, filters } = useFilter() as {
-    data: { data: any[] };
+    data: { data: [] };
     filters: Filters;
   };
 

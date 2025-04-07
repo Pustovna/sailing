@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import "./event.scss";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import MapTwo from "@/app/ui/components/map/MapTwo";
 import { getPostsById } from "@/app/actions/events";
 import { Community, Contact } from "@/app/types/Event";
@@ -22,8 +22,8 @@ interface generateMetadataProps {
 }
 
 export async function generateMetadata(
-  { params, searchParams }: generateMetadataProps,
-  parent: ResolvingMetadata
+  { params }: generateMetadataProps,
+  // parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
   const id = (await params).slug;

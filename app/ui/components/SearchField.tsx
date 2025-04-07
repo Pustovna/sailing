@@ -2,7 +2,6 @@
 import React from "react";
 import {
   FormControl,
-  Icon,
   IconButton,
   InputAdornment,
   InputLabel,
