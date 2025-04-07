@@ -52,7 +52,7 @@ export const getPosts = async (filters?:  Filters) => {
     if (community) {
       filtersObject.info.community.name.$in = community;
     }
-    if (date) { 
+    if (date && date.startDate && date.endDate) { 
       filtersObject.info.date.$between = [date.startDate, date.endDate];
     }
     const eventsQuert = qs.stringify(

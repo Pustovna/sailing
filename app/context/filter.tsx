@@ -23,8 +23,8 @@ const initialContext: FilterContextType = {
     type: "",
     community: "",
     date: {
-      startDate: '',
-      endDate: '',
+      startDate: "",
+      endDate: "",
     },
   },
   updateFilter: () => {},
