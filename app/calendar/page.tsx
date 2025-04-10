@@ -5,8 +5,7 @@ import Calendar from "./Calendar";
 import { getPosts } from "../actions/events";
 
 export default async function Page() {
-  
-  const {error, success} = await getPosts();
+  const { error, success } = await getPosts();
 
   return (
     <Container
@@ -15,13 +14,8 @@ export default async function Page() {
       maxWidth="lg"
     >
       <Suspense fallback={<div>Loading...</div>}>
-      {success &&  (
-           <Calendar posts={success.data} />
-      )}
-      {error && (
-        <div>Какая-то ошибка</div>
-      )}
-     
+        {success && <Calendar posts={success.data} />}
+        {error && <div>Какая-то ошибка</div>}
       </Suspense>
     </Container>
   );

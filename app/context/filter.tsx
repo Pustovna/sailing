@@ -43,7 +43,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
   const [data, setData] = useState<{ data: [] }>({ data: [] });
 
-  // Функция для обновления фильтров
+
   const updateFilter = (
     name: keyof Filters,
     value: string | string[] | IRanges
@@ -54,7 +54,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     }));
   };
 
-  // Эффект для выполнения запроса на сервер при изменении фильтров
+
+  // eslint-disable-next-line eqeqeq
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
@@ -89,7 +90,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     return () => {
       controller.abort(); // Отменяем запрос при размонтировании
     };
-  }, [filters, abortController, isFirstRender]);
+  }, [filters]);
 
   return (
     <FilterContext.Provider value={{ filters, updateFilter, data }}>
