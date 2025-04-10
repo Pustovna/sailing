@@ -5,7 +5,10 @@ import "./styles.css";
 import { IMapState } from "yandex-maps";
 
 interface MapTwoProps {
-  coordinates?: number[];
+  coordinates?: {
+    lat: number;
+    long: number;
+  };
 }
 
 const MapLoder = () => {
@@ -15,12 +18,13 @@ const MapLoder = () => {
 export default function MapTwo({ coordinates }: MapTwoProps) {
   const [loading, setLoading] = React.useState<boolean>(true);
   const defaultState: IMapState = {
-    center: coordinates,
-    zoom: 10,
+    center: coordinates ? [coordinates?.lat, coordinates?.long] : [0.00, 0.00],
+    zoom: 15,
   };
 
+
   return (
-    <YMaps>
+    <YMaps query={{ apikey: process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY }}>
       {loading && <MapLoder></MapLoder>}
       <Map
         defaultState={defaultState}
@@ -28,7 +32,7 @@ export default function MapTwo({ coordinates }: MapTwoProps) {
         className="map_container"
         onLoad={() => setLoading(false)}
       >
-        <Placemark geometry={coordinates} />
+        <Placemark geometry={[coordinates?.lat, coordinates?.long]} />
       </Map>
     </YMaps>
   );

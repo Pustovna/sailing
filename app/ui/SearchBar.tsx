@@ -4,7 +4,7 @@ import SearchField from "./components/SearchField";
 import SelectField from "./components/SelectField";
 import DatePicker from "./components/DatePickerRange";
 
-export default function SearchBar() {
+export default function SearchBar({date} : { date: Date }) {
   return (
     <Box
       sx={{
@@ -31,7 +31,7 @@ export default function SearchBar() {
         label={"Сообщество"}
       />
       <Box sx={{ zIndex: "9" }}>
-        <DatePicker />
+        <DatePicker date={date}/>
       </Box>
     </Box>
   );

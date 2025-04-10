@@ -14,15 +14,14 @@ interface IRanges {
   selection: { startDate: Date; endDate: Date; key: string };
 }
 
-const DatePicker = () => {
+const DatePicker = ({date} : {date: Date}) => {
   const [selectionRange, setSelectionRange] = React.useState<
     IRanges["selection"]
   >({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: date,
+    endDate: date,
     key: "selection",
   });
-  const [minDate] = React.useState(new Date());
   const { updateFilter } = useFilter();
 
   const handleSelect = (ranges: RangeKeyDict) => {
@@ -38,8 +37,8 @@ const DatePicker = () => {
 
   const handleReset = () => {
     setSelectionRange({
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: date,
+      endDate: date,
       key: "selection",
     });
     updateFilter("date", {
@@ -57,7 +56,7 @@ const DatePicker = () => {
         locale={ru}
         staticRanges={[]}
         inputRanges={[]}
-        minDate={minDate}
+        minDate={date}
         dateDisplayFormat="dd.MM.yyyy"
       />
       <Button onClick={handleReset}>Сбросить даты</Button>

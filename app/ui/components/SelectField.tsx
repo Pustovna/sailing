@@ -9,7 +9,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
 import { useFilter } from "../../context/filter";
-
+import { IconButton } from "@mui/material";
+import { Cancel } from "@mui/icons-material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -51,6 +52,11 @@ export default function SelectField({ ...params }) {
     }
   };
 
+  const handleClear = () => {
+    setPersonName([]);
+    updateFilter(title, []);
+  };
+
   return (
     <div>
       <FormControl fullWidth>
@@ -73,6 +79,12 @@ export default function SelectField({ ...params }) {
             </Box>
           )}
           MenuProps={MenuProps}
+          sx={{
+            "& .MuiSvgIcon-root": {
+              color: "blue",
+              right: "34px",
+            },
+          }}
         >
           {names.map((name: string) => (
             <MenuItem
@@ -84,6 +96,18 @@ export default function SelectField({ ...params }) {
             </MenuItem>
           ))}
         </Select>
+        <IconButton
+          aria-label="Поиск"
+          onClick={() => handleClear()}
+          sx={{
+            position: "absolute",
+            right: "0",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Cancel fontSize={"small"} htmlColor="blue" />
+        </IconButton>
       </FormControl>
     </div>
   );

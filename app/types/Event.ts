@@ -23,6 +23,11 @@ export interface Community {
   id: string;
 }
 
+export interface EventTypes { 
+  name: string;
+  id: string;
+}
+
 export default interface Event {
   title: string;
   info: {

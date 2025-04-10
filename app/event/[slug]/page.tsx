@@ -14,17 +14,17 @@ import "./event.scss";
 import type { Metadata } from "next";
 import MapTwo from "@/app/ui/components/map/MapTwo";
 import { getPostsById } from "@/app/actions/events";
-import { Community, Contact } from "@/app/types/Event";
+import { Community, Contact, EventTypes } from "@/app/types/Event";
 
 interface generateMetadataProps {
   params: Promise<{ slug: string }>;
   searchParams: Promise<URLSearchParams>; // Изменено на Promise<URLSearchParams>
 }
 
-export async function generateMetadata(
-  { params }: generateMetadataProps,
-  // parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: generateMetadataProps): // parent: ResolvingMetadata
+Promise<Metadata> {
   // read route params
   const id = (await params).slug;
   // fetch data
@@ -59,11 +59,7 @@ export default async function Page({
         className="event_container"
         marginBottom={"30px"}
       >
-        {post.error && (
-          <div>
-            Кажется что-то пошло не так
-          </div>
-        )}
+        {post.error && <div>Кажется что-то пошло не так</div>}
         {post.success && (
           <>
             <Breadcrumbs aria-label="breadcrumb">
@@ -82,12 +78,23 @@ export default async function Page({
                 {post.success.title}
               </Link>
             </Breadcrumbs>
-            <Typography
-              sx={{ typography: { sm: "h3", xs: "h4" } }}
-              margin={"10px 0"}
-            >
-              {post.success.title}
-            </Typography>
+            
+            <Box display={"flex"} alignItems={"center"} flexWrap={"wrap"} gap={2}>
+              <Typography
+                sx={{ typography: { sm: "h3", xs: "h4" } }}
+                margin={"10px 0"}
+              >
+                {post.success.title}
+              </Typography>
+
+              {post.success.info.eventTypes && (
+                <Stack direction="row" spacing={1}>
+                  {post.success.info.eventTypes.map((type: EventTypes) => (
+                    <Chip key={type.id} label={type.name} variant="outlined"/>
+                  ))}
+                </Stack>
+              )}
+            </Box>
 
             {post.success.info.community && (
               <Stack direction="row" spacing={1} marginBottom={"10px"}>
@@ -100,10 +107,10 @@ export default async function Page({
             <Box display={"flex"} alignItems={"center"} gap={1}>
               <Typography variant="body1">
                 <span className="event_note">Где: </span>{" "}
-                {post.success.place?.address
-                  ? post.success.place?.address
-                  : post.success.place?.link
-                  ? post.success.place?.link
+                {post.success.info.place?.address
+                  ? post.success.info.place?.address
+                  : post.success.info.place?.link
+                  ? post.success.info.place?.link
                   : "Не указано"}
               </Typography>
               {post.success.place?.address && (
@@ -128,9 +135,9 @@ export default async function Page({
               <span className="event_note">Когда: </span>
               {post.success.info?.date}
             </Typography>
-            <Typography variant="body1">
+            {/* <Typography variant="body1">
               <span className="event_note">Регистрация до: </span>
-            </Typography>
+            </Typography> */}
             {post.success.info?.price && (
               <Typography variant="body1">
                 <span className="event_note">Цена участия: </span>{" "}
@@ -180,7 +187,9 @@ export default async function Page({
               gap={3}
             >
               <Divider />
-              <p className="event_desctiption">{post.success.info?.fullDescription}</p>
+              <p className="event_desctiption">
+                {post.success.info?.fullDescription}
+              </p>
 
               <Divider />
             </Box>

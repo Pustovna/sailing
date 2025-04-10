@@ -58,6 +58,8 @@ const SearchField: React.FC = () => {
             >
               <Cancel fontSize={"small"} htmlColor="blue" />
             </IconButton>
+            
+            
           </InputAdornment>
         }
         label="Поиск"
