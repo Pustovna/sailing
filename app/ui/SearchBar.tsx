@@ -3,8 +3,28 @@ import * as React from "react";
 import SearchField from "./components/SearchField";
 import SelectField from "./components/SelectField";
 import DatePicker from "./components/DatePickerRange";
+import { getEventFilters } from "../actions/events";
+import { event } from "yandex-maps";
 
 export default function SearchBar({date} : { date: Date }) {
+  const [filters, setFilters] = React.useState({
+    community: [],
+    eventTypes: [],
+  });
+
+  
+  React.useEffect(() => {
+    const fetchFilters = async () => {
+      const { error, success } = await getEventFilters();
+      if (success) {
+        setFilters(success.data[0].componentFilters);
+      }
+    };
+    fetchFilters();
+  }, []);
+  
+
+
   return (
     <Box
       sx={{
@@ -21,12 +41,12 @@ export default function SearchBar({date} : { date: Date }) {
     >
       <SearchField />
       <SelectField
-        names={["Сходка буеристов", "Л6", "Любительская регата", "ВФПС"]}
+        names={[...filters.eventTypes]}
         title={"type"}
         label={"Тип"}
       />
       <SelectField
-        names={["Невка", "Геркулес", "Яхтенный чат", "ВФПС"]}
+        names={[...filters.community]}
         title={"community"}
         label={"Сообщество"}
       />

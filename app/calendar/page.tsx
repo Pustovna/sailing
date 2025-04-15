@@ -5,7 +5,7 @@ import Calendar from "./Calendar";
 import { getPosts } from "../actions/events";
 
 const newDate = new Date();
-const currentDate = newDate.toISOString().split("T")[0];
+
 
 export default async function Page() {
   const { error, success } = await getPosts();

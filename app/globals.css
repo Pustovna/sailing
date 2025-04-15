@@ -41,9 +41,10 @@ a {
   }
 }
 
-.main_container { 
+body.main_container { 
   position: relative;
   min-height: 100vh;
+  padding-right: 0 !important;
 }
 
 .backvideo_container {
